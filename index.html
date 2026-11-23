@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SuperYai Motors — Quality · Trust · Drive | Hai Tejaria, Juba</title>
+<meta name="description" content="SuperYai Motors, Hai Tejaria, Juba. Toyota, Nissan and more. Explore our cars in a live 3D showroom, then call 0928 976 624.">
+<meta name="theme-color" content="#060606">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,500;0,600;0,700;1,600;1,700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#060606;--panel:#0f0f11;--gold:#f5b301;--gold2:#ffd65a;--red:#e10600;--line:rgba(255,255,255,.1);
+  --display:'Chakra Petch','Arial Narrow',system-ui,sans-serif;--body:'Manrope',system-ui,-apple-system,'Segoe UI',sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:#fff;font-family:var(--body);line-height:1.6;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+.wrap{width:min(1240px,92vw);margin-inline:auto}
+h1,h2,h3{font-family:var(--display);line-height:1;letter-spacing:-.01em;text-transform:uppercase}
+.eyebrow{display:inline-flex;align-items:center;gap:.7rem;font-family:var(--display);font-size:.82rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);font-weight:600}
+.eyebrow::before{content:"";width:38px;height:3px;background:linear-gradient(90deg,var(--red),var(--gold));transform:skewX(-30deg)}
+.btn{display:inline-flex;align-items:center;gap:.6rem;padding:1rem 1.7rem;font:inherit;font-family:var(--display);font-weight:700;letter-spacing:.08em;text-transform:uppercase;font-size:.92rem;border:0;cursor:pointer;transform:skewX(-12deg);transition:transform .25s,box-shadow .25s,background .25s}
+.btn>span{display:inline-flex;gap:.6rem;align-items:center;transform:skewX(12deg)}
+.btn.primary{background:linear-gradient(135deg,var(--gold2),var(--gold));color:#150f00;box-shadow:0 10px 30px -10px rgba(245,179,1,.7)}
+.btn.primary:hover{transform:skewX(-12deg) translateY(-3px);box-shadow:0 18px 36px -10px rgba(245,179,1,.85)}
+.btn.red{background:var(--red);color:#fff;box-shadow:0 10px 30px -10px rgba(225,6,0,.7)}
+.btn.red:hover{transform:skewX(-12deg) translateY(-3px)}
+.btn.ghost{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.22);color:#fff}
+.btn.ghost:hover{background:#fff;color:#000;transform:skewX(-12deg) translateY(-3px)}
+
+nav{position:fixed;inset:0 0 auto 0;z-index:60;transition:background .3s}
+nav.stuck{background:rgba(6,6,6,.8);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:76px}
+.logo{font-family:var(--display);font-style:italic;font-weight:700;line-height:1;display:flex;flex-direction:column}
+.logo b{font-size:1.75rem;letter-spacing:.01em;background:linear-gradient(180deg,#fff2b8,var(--gold) 55%,#b57b00);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 0 10px rgba(245,179,1,.3))}
+.logo small{font-size:.62rem;letter-spacing:.42em;color:var(--red);font-style:normal;font-weight:700;margin-top:2px}
+.links{display:flex;gap:2rem;align-items:center;font-family:var(--display);font-weight:600;font-size:.9rem;letter-spacing:.1em;text-transform:uppercase}
+.links a:not(.btn){opacity:.75;transition:.2s}.links a:not(.btn):hover{opacity:1;color:var(--gold)}
+.links .btn{padding:.65rem 1.2rem;font-size:.82rem}
+.burger{display:none;background:none;border:0;color:#fff;font-size:1.8rem;cursor:pointer}
+
+/* HERO */
+.hero{position:relative;min-height:100vh;overflow:hidden;display:flex;align-items:center;padding:100px 0 50px;
+  background:radial-gradient(60% 60% at 70% 55%,rgba(245,179,1,.13),transparent 70%),radial-gradient(40% 40% at 0% 100%,rgba(225,6,0,.16),transparent 70%),#050505}
+.hero canvas{position:absolute;inset:0;width:100%;height:100%;display:block;cursor:grab;touch-action:pan-y}
+.hero canvas:active{cursor:grabbing}
+.hero .word{position:absolute;left:-2vw;bottom:-6vw;font-family:var(--display);font-style:italic;font-weight:700;font-size:26vw;line-height:.8;color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.06);white-space:nowrap;pointer-events:none;text-transform:uppercase}
+.copy{position:relative;z-index:2;pointer-events:none;max-width:620px}
+.copy>*{pointer-events:auto}
+.hero h1{font-size:clamp(3.4rem,8vw,7.4rem);font-weight:700;font-style:italic;margin:1.4rem 0 1.5rem;line-height:.88}
+.hero h1 span{display:block}
+.hero h1 .g{background:linear-gradient(180deg,#fff2b8,var(--gold) 60%,#b57b00);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero h1 .r{color:var(--red)}
+.hero p.lead{font-size:1.15rem;color:#c8c8cc;max-width:40ch;margin-bottom:2rem}
+.cta{display:flex;gap:1.2rem;flex-wrap:wrap}
+.chips{display:flex;gap:.7rem;margin-top:2.2rem;flex-wrap:wrap}
+.chips span{padding:.5rem 1rem;border:1px solid var(--line);background:rgba(255,255,255,.05);font-size:.85rem;font-weight:600;backdrop-filter:blur(8px)}
+.hero-ui{position:absolute;z-index:3;right:4vw;bottom:34px;display:flex;align-items:center;gap:14px;padding:10px 16px;background:rgba(10,10,12,.7);border:1px solid var(--line);backdrop-filter:blur(10px)}
+.hero-ui em{font-style:normal;font-family:var(--display);font-size:.72rem;letter-spacing:.2em;color:#999;text-transform:uppercase}
+.sw{width:28px;height:28px;border-radius:50%;border:3px solid transparent;cursor:pointer;box-shadow:inset 0 0 0 2px rgba(0,0,0,.4);transition:transform .2s}
+.sw.on{border-color:#fff;transform:scale(1.18)}
+.drag{position:absolute;z-index:2;top:112px;right:4vw;font-family:var(--display);font-size:.72rem;letter-spacing:.3em;color:#777;text-transform:uppercase}
+.nogl{display:none;position:absolute;z-index:2;right:6vw;top:50%;transform:translateY(-50%);color:#999;font-size:.9rem;max-width:30ch;text-align:center}
+body.nogl-on .nogl{display:block}
+
+.tape{background:var(--gold);color:#000;border-block:4px solid #000;box-shadow:0 0 0 4px var(--gold);padding:.8rem 0;overflow:hidden;transform:rotate(-1deg);margin:0 -2vw;position:relative;z-index:3}
+.tape div{display:flex;gap:2.6rem;width:max-content;white-space:nowrap;animation:slide 32s linear infinite;font-family:var(--display);font-style:italic;font-weight:700;font-size:1.5rem;text-transform:uppercase}
+.tape span::after{content:"◆";margin-left:2.6rem;color:var(--red);font-size:.9rem}
+@keyframes slide{to{transform:translateX(-50%)}}
+
+section{position:relative}
+.pad{padding:130px 0}
+.sec-head{display:flex;justify-content:space-between;align-items:end;gap:2rem;flex-wrap:wrap;margin-bottom:46px}
+.sec-head h2{font-size:clamp(2.4rem,5.4vw,4.6rem);margin-top:1rem;font-style:italic;font-weight:700}
+.sec-head p{color:#a8a8ad;max-width:42ch}
+
+/* SHOWROOM */
+.showroom{display:grid;grid-template-columns:300px 1fr;gap:22px;align-items:stretch}
+.list{display:flex;flex-direction:column;gap:10px}
+.item{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:16px 18px;background:var(--panel);border:1px solid var(--line);color:#fff;font:inherit;text-align:left;cursor:pointer;transition:.25s;clip-path:polygon(0 0,calc(100% - 14px) 0,100% 14px,100% 100%,0 100%)}
+.item b{font-family:var(--display);font-size:1.12rem;text-transform:uppercase;display:block;line-height:1.1}
+.item small{color:#8c8c92;font-size:.78rem}
+.item .p{font-family:var(--display);font-weight:700;color:var(--gold);font-size:1.15rem;white-space:nowrap}
+.item:hover{border-color:rgba(245,179,1,.6);transform:translateX(6px)}
+.item.on{background:linear-gradient(120deg,#2a1f00,#14100a);border-color:var(--gold)}
+.stage{position:relative;min-height:560px;background:radial-gradient(70% 70% at 50% 62%,rgba(245,179,1,.12),transparent 70%),#08080a;border:1px solid var(--line);overflow:hidden}
+.stage canvas{position:absolute;inset:0;width:100%;height:100%;display:block;cursor:grab;touch-action:pan-y}
+.stage canvas:active{cursor:grabbing}
+.info{position:absolute;left:22px;top:20px;z-index:2;pointer-events:none}
+.info .tag{display:inline-block;background:var(--red);font-family:var(--display);font-size:.72rem;letter-spacing:.2em;padding:.25rem .7rem;font-weight:700;text-transform:uppercase;margin-bottom:.7rem}
+.info h3{font-size:clamp(1.8rem,3.4vw,2.8rem);font-style:italic}
+.info .meta{color:#a0a0a6;font-size:.9rem;margin-top:.4rem}
+.info .price{font-family:var(--display);font-weight:700;font-size:2.4rem;color:var(--gold);margin-top:.5rem;line-height:1}
+.stage-ui{position:absolute;left:22px;right:22px;bottom:18px;z-index:2;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.stage-ui .sws{display:flex;gap:10px;padding:8px 12px;background:rgba(10,10,12,.7);border:1px solid var(--line);backdrop-filter:blur(10px)}
+.stage-ui .btns{display:flex;gap:12px;flex-wrap:wrap}
+.stage-ui .btn{padding:.75rem 1.2rem;font-size:.8rem}
+.fine{margin-top:18px;color:#78787e;font-size:.84rem}
+
+/* SERVICES */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;perspective:1300px}
+.card{position:relative;padding:38px 30px 32px;background:linear-gradient(160deg,#18181b,#0a0a0b);border:1px solid var(--line);transform-style:preserve-3d;transition:transform .15s ease-out;min-height:330px;overflow:hidden}
+.card::before{content:"";position:absolute;left:0;top:0;right:0;height:4px;background:linear-gradient(90deg,var(--red),var(--gold))}
+.card .glare{position:absolute;inset:0;background:radial-gradient(300px circle at var(--gx,50%) var(--gy,0%),rgba(245,179,1,.18),transparent 60%);opacity:0;transition:opacity .3s;pointer-events:none}
+.card:hover .glare{opacity:1}
+.card .no{position:absolute;right:18px;top:8px;font-family:var(--display);font-style:italic;font-weight:700;font-size:6rem;color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.12)}
+.card .ico{width:64px;height:64px;display:grid;place-items:center;font-size:1.9rem;background:linear-gradient(135deg,var(--gold2),var(--gold));color:#000;margin-bottom:56px;transform:translateZ(54px) skewX(-8deg);box-shadow:0 18px 26px -10px #000}
+.card h3{font-size:1.8rem;margin-bottom:.8rem;font-style:italic;transform:translateZ(38px)}
+.card p{color:#a8a8ad;transform:translateZ(20px)}
+
+/* VISIT */
+.visit{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center}
+.visit h2{font-size:clamp(2.4rem,5vw,4.4rem);font-style:italic;margin:1rem 0 1.2rem}
+.visit p{color:#a8a8ad;max-width:42ch;margin-bottom:1.8rem}
+.scene3d{perspective:1100px;height:380px;display:grid;place-items:center}
+.pin{position:relative;width:300px;height:300px;transform-style:preserve-3d;animation:pin 9s ease-in-out infinite}
+@keyframes pin{0%,100%{transform:rotateX(62deg) rotateZ(-18deg)}50%{transform:rotateX(56deg) rotateZ(22deg)}}
+.pin .tile{position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(255,255,255,.06) 0 1px,transparent 1px 38px),repeating-linear-gradient(90deg,rgba(255,255,255,.06) 0 1px,transparent 1px 38px),#101012;border:2px solid var(--gold);box-shadow:0 0 60px rgba(245,179,1,.25)}
+.pin .road{position:absolute;left:0;right:0;top:44%;height:46px;background:#1b1b1f;transform:translateZ(2px);border-block:2px solid #333}
+.pin .road::after{content:"";position:absolute;left:0;right:0;top:50%;height:3px;background:repeating-linear-gradient(90deg,var(--gold) 0 20px,transparent 20px 40px)}
+.pin .mark{position:absolute;left:50%;top:42%;width:0;height:0;transform-style:preserve-3d;transform:translateZ(4px)}
+.pin .mark i{position:absolute;left:-26px;top:-120px;width:52px;height:52px;border-radius:50% 50% 50% 0;background:var(--red);transform:translateZ(80px) rotateX(-62deg) rotate(-45deg);box-shadow:0 0 40px rgba(225,6,0,.7);animation:bob 2.4s ease-in-out infinite}
+.pin .mark i::after{content:"";position:absolute;inset:16px;border-radius:50%;background:#fff}
+@keyframes bob{50%{transform:translateZ(110px) rotateX(-62deg) rotate(-45deg)}}
+.pin .shadowdot{position:absolute;left:50%;top:44%;width:60px;height:24px;margin-left:-30px;border-radius:50%;background:rgba(0,0,0,.7);filter:blur(5px);transform:translateZ(3px)}
+
+/* CONTACT */
+.contact{background:linear-gradient(170deg,#140d02,var(--bg) 60%)}
+.contact .wrap{display:grid;grid-template-columns:1fr 1.1fr;gap:4rem;align-items:start}
+.contact h2{font-size:clamp(2.6rem,5.4vw,4.8rem);font-style:italic;margin:1.2rem 0}
+.contact p.lead{color:#a8a8ad;max-width:40ch;margin-bottom:2rem}
+.cinfo{display:grid;gap:14px}
+.cinfo a,.cinfo div.r{display:flex;gap:14px;align-items:center;padding:16px 18px;background:var(--panel);border:1px solid var(--line);transition:transform .25s,border-color .25s;word-break:break-word}
+.cinfo a:hover{transform:translateX(8px);border-color:var(--gold)}
+.cinfo .i{font-size:1.4rem;width:44px;height:44px;background:linear-gradient(135deg,var(--gold2),var(--gold));color:#000;display:grid;place-items:center;flex:none}
+.cinfo small{display:block;color:#8c8c92;font-size:.74rem;letter-spacing:.14em;text-transform:uppercase}
+form{padding:34px;background:linear-gradient(160deg,#18181b,#0a0a0b);border:1px solid var(--line);border-top:4px solid var(--gold);display:grid;gap:16px;transform:perspective(1200px) rotateY(-4deg);transition:transform .4s}
+form:hover,form:focus-within{transform:perspective(1200px) rotateY(0)}
+form h3{font-size:1.9rem;font-style:italic}
+label{font-size:.76rem;letter-spacing:.14em;text-transform:uppercase;color:#9a9aa0;display:grid;gap:6px;font-weight:700}
+input,select,textarea{font:inherit;color:#fff;background:#050505;border:1px solid var(--line);padding:.9rem 1rem;outline:none;text-transform:none;letter-spacing:0}
+input:focus,select:focus,textarea:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(245,179,1,.22)}
+select option{color:#000}
+textarea{min-height:90px;resize:vertical}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+footer{padding:46px 0;border-top:1px solid var(--line);font-size:.9rem;color:#9a9aa0}
+footer .wrap{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;align-items:center}
+footer b{color:var(--gold);font-family:var(--display);font-style:italic;letter-spacing:.04em}
+
+.reveal{opacity:0;transform:translateY(40px);transition:opacity .8s,transform .8s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+
+@media(max-width:980px){
+  .links a:not(.btn){display:none}.burger{display:block}
+  .links.open{position:absolute;top:76px;left:0;right:0;background:rgba(6,6,6,.97);flex-direction:column;padding:24px;gap:1.2rem}
+  .links.open a{display:block}.links.open .btn{display:inline-flex}
+  .hero{align-items:flex-start;padding-top:96px}
+  .hero canvas{top:34%;height:66%}
+  .hero h1{font-size:clamp(3rem,13vw,5rem)}
+  .hero-ui{right:50%;transform:translateX(50%);bottom:14px}
+  .drag{top:auto;bottom:72px;right:50%;transform:translateX(50%)}
+  .showroom,.visit,.contact .wrap{grid-template-columns:1fr}
+  .list{flex-direction:row;overflow-x:auto;padding-bottom:6px}.item{min-width:230px}
+  .stage{min-height:480px}
+  .cards{grid-template-columns:1fr}
+  .scene3d{height:300px}.pin{width:230px;height:230px}
+}
+@media(max-width:600px){.row2{grid-template-columns:1fr}.stage-ui{flex-direction:column;align-items:flex-start}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="wrap">
+    <a href="#top" class="logo" aria-label="SuperYai Motors home"><b>SUPERYAI</b><small>CARS · QUALITY · TRUST · DRIVE</small></a>
+    <div class="links" id="links">
+      <a href="#showroom">3D Showroom</a>
+      <a href="#services">Services</a>
+      <a href="#visit">Visit</a>
+      <a href="#contact">Contact</a>
+      <a href="tel:+211928976624" class="btn red"><span>📞 Call now</span></a>
+    </div>
+    <button class="burger" id="burger" aria-label="Menu">☰</button>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="word" aria-hidden="true">Drive</div>
+  <canvas id="heroGL" aria-label="3D sports car. Drag to rotate."></canvas>
+  <div class="drag">Drag to rotate</div>
+  <div class="nogl">Your browser can't show the live 3D view, but the whole site still works. Call us on 0928 976 624.</div>
+  <div class="wrap">
+    <div class="copy">
+      <span class="eyebrow">Hai Tejaria · Juba · South Sudan 🇸🇸</span>
+      <h1><span class="g">Quality.</span><span>Trust.</span><span class="r">Drive.</span></h1>
+      <p class="lead">Get your next car with SuperYai Motors. Walk around our cars in the 3D showroom, then just call us.</p>
+      <div class="cta">
+        <a href="#showroom" class="btn primary"><span>Open 3D showroom →</span></a>
+        <a href="tel:+211928976624" class="btn ghost"><span>📞 0928 976 624</span></a>
+      </div>
+      <div class="chips"><span>🚗 Toyota · Nissan &amp; more</span><span>📍 Hai Tejaria, Juba</span><span>💵 Deals from $2,700</span></div>
+    </div>
+  </div>
+  <div class="hero-ui"><em>Paint</em><div id="heroSw" style="display:flex;gap:10px"></div></div>
+</header>
+
+<div class="tape" aria-hidden="true"><div>
+  <span>Toyota Vanguard</span><span>Toyota Camry</span><span>Toyota Ractis</span><span>Toyota Ist</span><span>Nissan Juke</span><span>Engines &amp; Parts</span><span>Quality · Trust · Drive</span>
+  <span>Toyota Vanguard</span><span>Toyota Camry</span><span>Toyota Ractis</span><span>Toyota Ist</span><span>Nissan Juke</span><span>Engines &amp; Parts</span><span>Quality · Trust · Drive</span>
+</div></div>
+
+<section class="pad" id="showroom">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div><span class="eyebrow">Live 3D showroom</span><h2>Walk around the car.</h2></div>
+      <p>Pick a car, drag to spin it, try different paint colors. Then call to confirm it's available.</p>
+    </div>
+    <div class="showroom reveal">
+      <div class="list" id="list"></div>
+      <div class="stage" id="stage">
+        <canvas id="showGL" aria-label="3D car viewer"></canvas>
+        <div class="info"><span class="tag" id="iTag">Listing</span><h3 id="iName">—</h3><div class="meta" id="iMeta"></div><div class="price" id="iPrice"></div></div>
+        <div class="stage-ui">
+          <div class="sws" id="showSw"></div>
+          <div class="btns">
+            <a class="btn primary" id="callBtn" href="tel:+211928976624"><span>📞 Call about this car</span></a>
+            <a class="btn ghost" id="waBtn" href="#" target="_blank" rel="noopener"><span>WhatsApp</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="fine">Models and prices are from recent listings on our TikTok. The 3D shapes are illustrative and colors are adjustable. Stock moves quickly, so call to confirm availability.</p>
+  </div>
+</section>
+
+<section class="pad" id="services" style="padding-top:20px">
+  <div class="wrap">
+    <div class="sec-head reveal"><div><span class="eyebrow">What we do</span><h2>Built around you.</h2></div><p>Simple, direct and local: we're in Hai Tejaria, Juba.</p></div>
+    <div class="cards">
+      <article class="card tilt reveal"><div class="glare"></div><span class="no">01</span><div class="ico">🚗</div><h3>Get your car</h3><p>Toyotas, Nissans and more at honest prices. Browse, ask questions, see the car and drive away.</p></article>
+      <article class="card tilt reveal"><div class="glare"></div><span class="no">02</span><div class="ico">⚡</div><h3>Quick-sale deals</h3><p>Looking for a bargain? We post quick-sale cars with clear prices, so follow us and call fast.</p></article>
+      <article class="card tilt reveal"><div class="glare"></div><span class="no">03</span><div class="ico">🔧</div><h3>Engines &amp; parts</h3><p>Ask about engines and spare parts. Tell us the car you drive and what you need.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="pad" id="visit" style="padding-top:20px">
+  <div class="wrap visit">
+    <div class="reveal">
+      <span class="eyebrow">Visit us</span>
+      <h2>Hai Tejaria, Juba.</h2>
+      <p>Come and see the cars in person. Call before you travel so we can confirm what's on the lot.</p>
+      <div class="cta"><a href="tel:+211928976624" class="btn primary"><span>📞 0928 976 624</span></a><a href="tel:+211981333347" class="btn ghost"><span>📞 0981 333 347</span></a></div>
+    </div>
+    <div class="scene3d" aria-hidden="true"><div class="pin"><div class="tile"></div><div class="road"></div><div class="shadowdot"></div><div class="mark"><i></i></div></div></div>
+  </div>
+</section>
+
+<section class="pad contact" id="contact">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="eyebrow">Get in touch</span>
+      <h2>Call us. Drive away.</h2>
+      <p class="lead">Don't hesitate, just call. Or send your request and we'll get back to you.</p>
+      <div class="cinfo">
+        <a href="tel:+211928976624"><span class="i">📞</span><div><small>Call</small>0928 976 624</div></a>
+        <a href="tel:+211981333347"><span class="i">📞</span><div><small>Call</small>0981 333 347</div></a>
+        <a href="https://www.tiktok.com/@superyai04" target="_blank" rel="noopener"><span class="i">🎬</span><div><small>TikTok</small>@superyai04</div></a>
+        <div class="r"><span class="i">📍</span><div><small>Location</small>Hai Tejaria, Juba, South Sudan</div></div>
+      </div>
+    </div>
+    <form id="quote" class="reveal">
+      <h3>Tell us what you need</h3>
+      <div class="row2">
+        <label>Your name<input name="name" required placeholder="Your name"></label>
+        <label>Budget (USD)<input name="budget" placeholder="e.g. 5,000"></label>
+      </div>
+      <label>Car you want
+        <select name="car" id="carSel"><option>Toyota Vanguard</option><option>Toyota Camry</option><option>Toyota Ractis</option><option>Toyota Ist</option><option>Nissan Juke</option><option>Other car</option><option>Engine / spare parts</option></select>
+      </label>
+      <label>Details<textarea name="msg" id="msg" placeholder="Year, color, anything else…"></textarea></label>
+      <button class="btn primary" type="submit"><span>Send on WhatsApp →</span></button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div><b>SUPERYAI MOTORS</b> · Quality · Trust · Drive</div>
+    <div>Hai Tejaria, Juba 🇸🇸 · © <span id="yr"></span></div>
+  </div>
+</footer>
+
+<script>
+(()=>{
+const $=(s,p=document)=>p.querySelector(s), $$=(s,p=document)=>[...p.querySelectorAll(s)];
+const clamp=(v,a,b)=>Math.min(b,Math.max(a,v));
+$('#yr').textContent=new Date().getFullYear();
+const nav=$('#nav');
+addEventListener('scroll',()=>nav.classList.toggle('stuck',scrollY>30),{passive:true});
+$('#burger').onclick=()=>$('#links').classList.toggle('open');
+$$('#links a').forEach(a=>a.onclick=()=>$('#links').classList.remove('open'));
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+$$('.reveal').forEach((el,i)=>{el.style.transitionDelay=(i%3)*80+'ms';io.observe(el)});
+$$('.tilt').forEach(c=>{
+  c.addEventListener('pointermove',e=>{const r=c.getBoundingClientRect(),x=(e.clientX-r.left)/r.width,y=(e.clientY-r.top)/r.height;
+    c.style.transform=`rotateY(${(x-.5)*18}deg) rotateX(${(.5-y)*18}deg) translateZ(8px)`;c.style.setProperty('--gx',x*100+'%');c.style.setProperty('--gy',y*100+'%')});
+  c.addEventListener('pointerleave',()=>c.style.transform='');
+});
+
+/* =====================================================================
+   Tiny WebGL car engine: procedural extruded car bodies, lit + reflective,
+   mirrored floor, dust particles. No libraries.
+   ===================================================================== */
+const M={
+ id(){return new Float32Array([1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1])},
+ mul(a,b){const o=new Float32Array(16);for(let c=0;c<4;c++)for(let r=0;r<4;r++){let s=0;for(let k=0;k<4;k++)s+=a[k*4+r]*b[c*4+k];o[c*4+r]=s}return o},
+ tr(x,y,z){const m=M.id();m[12]=x;m[13]=y;m[14]=z;return m},
+ sc(x,y,z){const m=M.id();m[0]=x;m[5]=y;m[10]=z;return m},
+ rY(a){const c=Math.cos(a),s=Math.sin(a),m=M.id();m[0]=c;m[2]=-s;m[8]=s;m[10]=c;return m},
+ rZ(a){const c=Math.cos(a),s=Math.sin(a),m=M.id();m[0]=c;m[1]=s;m[4]=-s;m[5]=c;return m},
+ persp(f,a,n,fa,shift){const t=1/Math.tan(f/2),m=new Float32Array(16);m[0]=t/a;m[5]=t;m[10]=(fa+n)/(n-fa);m[11]=-1;m[14]=2*fa*n/(n-fa);m[8]=-shift;return m},
+ look(e,c){let z=[e[0]-c[0],e[1]-c[1],e[2]-c[2]];let l=Math.hypot(...z);z=z.map(v=>v/l);
+  let x=[z[2],0,-z[0]];l=Math.hypot(...x);x=x.map(v=>v/l);const y=[z[1]*x[2]-z[2]*x[1],z[2]*x[0]-z[0]*x[2],z[0]*x[1]-z[1]*x[0]];
+  const d=(a,b)=>a[0]*b[0]+a[1]*b[1]+a[2]*b[2];
+  return new Float32Array([x[0],y[0],z[0],0,x[1],y[1],z[1],0,x[2],y[2],z[2],0,-d(x,e),-d(y,e),-d(z,e),1])}
+};
+/* geometry */
+function triangulate(p){
+  const n=p.length,idx=[...Array(n).keys()],out=[];
+  const ar=(a,b,c)=>(b[0]-a[0])*(c[1]-a[1])-(b[1]-a[1])*(c[0]-a[0]);
+  const inT=(q,a,b,c)=>ar(a,b,q)>=-1e-9&&ar(b,c,q)>=-1e-9&&ar(c,a,q)>=-1e-9;
+  let g=0;
+  while(idx.length>3&&g++<6000){
+    let cl=false;
+    for(let i=0;i<idx.length;i++){
+      const a=idx[(i+idx.length-1)%idx.length],b=idx[i],c=idx[(i+1)%idx.length];
+      if(ar(p[a],p[b],p[c])<=1e-10)continue;
+      let ok=true;for(const j of idx){if(j===a||j===b||j===c)continue;if(inT(p[j],p[a],p[b],p[c])){ok=false;break}}
+      if(ok){out.push(a,b,c);idx.splice(i,1);cl=true;break}
+    }
+    if(!cl)break;
+  }
+  if(idx.length===3)out.push(idx[0],idx[1],idx[2]);
+  return out;
+}
+function extrude(poly,w,b){
+  let A=0;const n0=poly.length;for(let i=0;i<n0;i++){const p=poly[i],q=poly[(i+1)%n0];A+=p[0]*q[1]-q[0]*p[1]}
+  if(A<0)poly=poly.slice().reverse();
+  const n=poly.length;
+  let x0=1e9,x1=-1e9,y0=1e9,y1=-1e9;poly.forEach(p=>{x0=Math.min(x0,p[0]);x1=Math.max(x1,p[0]);y0=Math.min(y0,p[1]);y1=Math.max(y1,p[1])});
+  const cx=(x0+x1)/2,cy=(y0+y1)/2,s=b>0?.965:1;
+  const inner=poly.map(p=>[cx+(p[0]-cx)*s,cy+(p[1]-cy)*s]);
+  const nm=poly.map((p,i)=>{const a=poly[(i+n-1)%n],c=poly[(i+1)%n];
+    let e1=[p[0]-a[0],p[1]-a[1]],e2=[c[0]-p[0],c[1]-p[1]];
+    const l1=Math.hypot(...e1)||1,l2=Math.hypot(...e2)||1;
+    let nx=e1[1]/l1+e2[1]/l2,ny=-e1[0]/l1-e2[0]/l2;const l=Math.hypot(nx,ny)||1;return[nx/l,ny/l]});
+  const P=[],N=[],I=[];const h=w/2,hb=h-b;
+  const band=(pa,za,pb,zb,na,nb)=>{const base=P.length/3;
+    for(let i=0;i<n;i++){P.push(pa[i][0],pa[i][1],za,pb[i][0],pb[i][1],zb);N.push(...na(i),...nb(i))}
+    for(let i=0;i<n;i++){const j=(i+1)%n;const v0=base+2*i,v1=v0+1,v2=base+2*j,v3=v2+1;I.push(v0,v2,v1,v1,v2,v3)}};
+  band(poly,-hb,poly,hb,i=>[nm[i][0],nm[i][1],0],i=>[nm[i][0],nm[i][1],0]);
+  if(b>0){
+    const bn=(i,sg)=>{const v=[nm[i][0]*.7,nm[i][1]*.7,.7*sg],l=Math.hypot(...v);return v.map(t=>t/l)};
+    band(poly,hb,inner,h,i=>bn(i,1),i=>bn(i,1));
+    band(inner,-h,poly,-hb,i=>bn(i,-1),i=>bn(i,-1));
+  }
+  const tri=triangulate(inner);
+  let base=P.length/3;inner.forEach(p=>{P.push(p[0],p[1],h);N.push(0,0,1)});
+  for(let i=0;i<tri.length;i+=3)I.push(base+tri[i],base+tri[i+1],base+tri[i+2]);
+  base=P.length/3;inner.forEach(p=>{P.push(p[0],p[1],-h);N.push(0,0,-1)});
+  for(let i=0;i<tri.length;i+=3)I.push(base+tri[i],base+tri[i+2],base+tri[i+1]);
+  return{P,N,I};
+}
+function cyl(r,len,seg){seg=seg||36;const P=[],N=[],I=[],h=len/2;
+  for(let i=0;i<=seg;i++){const a=i/seg*Math.PI*2,c=Math.cos(a),s=Math.sin(a);P.push(r*c,r*s,-h,r*c,r*s,h);N.push(c,s,0,c,s,0);
+    if(i<seg){const v=i*2;I.push(v,v+2,v+1,v+1,v+2,v+3)}}
+  for(const sg of[-1,1]){const b=P.length/3;P.push(0,0,sg*h);N.push(0,0,sg);
+    for(let i=0;i<=seg;i++){const a=i/seg*Math.PI*2;P.push(r*Math.cos(a),r*Math.sin(a),sg*h);N.push(0,0,sg)}
+    for(let i=0;i<seg;i++)I.push(b,b+1+i,b+2+i)}
+  return{P,N,I};}
+function box(w,h,d){const x=w/2,y=h/2,z=d/2,P=[],N=[],I=[];
+  const f=(n,a,b,c,d2)=>{const o=P.length/3;P.push(...a,...b,...c,...d2);for(let i=0;i<4;i++)N.push(...n);I.push(o,o+1,o+2,o,o+2,o+3)};
+  f([0,0,1],[-x,-y,z],[x,-y,z],[x,y,z],[-x,y,z]);f([0,0,-1],[x,-y,-z],[-x,-y,-z],[-x,y,-z],[x,y,-z]);
+  f([1,0,0],[x,-y,z],[x,-y,-z],[x,y,-z],[x,y,z]);f([-1,0,0],[-x,-y,-z],[-x,-y,z],[-x,y,z],[-x,y,-z]);
+  f([0,1,0],[-x,y,z],[x,y,z],[x,y,-z],[-x,y,-z]);f([0,-1,0],[-x,-y,-z],[x,-y,-z],[x,-y,z],[-x,-y,z]);
+  return{P,N,I};}
+
+/* car profiles */
+const PROF={
+ sport:{L:4.6,hf:.74,hc:.86,belt:.97,roof:1.15,xc:.55,xrf:-.15,xrr:-.95,xrb:-1.6,wr:.32,Wb:1.92},
+ camry:{L:4.85,hf:.88,hc:1.0,belt:1.02,roof:1.46,xc:.85,xrf:.1,xrr:-1.0,xrb:-1.42,wr:.34,Wb:1.82},
+ vanguard:{L:4.57,hf:.98,hc:1.08,belt:1.12,roof:1.7,xc:.8,xrf:.25,xrr:-1.9,xrb:-2.1,wr:.37,Wb:1.84},
+ ractis:{L:3.95,hf:.86,hc:.98,belt:1.0,roof:1.62,xc:.7,xrf:.1,xrr:-1.6,xrb:-1.8,wr:.32,Wb:1.69},
+ ist:{L:3.9,hf:.84,hc:.95,belt:.98,roof:1.55,xc:.62,xrf:0,xrr:-1.45,xrb:-1.72,wr:.31,Wb:1.69},
+ juke:{L:4.14,hf:.95,hc:1.06,belt:1.1,roof:1.58,xc:.6,xrf:-.1,xrr:-1.35,xrb:-1.86,wr:.35,Wb:1.77}
+};
+const MAT={
+ glass:{c:[.015,.025,.04],shin:140,refl:.95,emis:0},
+ tire:{c:[.025,.025,.03],shin:6,refl:.05,emis:0},
+ rim:{c:[.78,.8,.84],shin:100,refl:.85,emis:0},
+ dark:{c:[.03,.03,.034],shin:20,refl:.12,emis:0},
+ head:{c:[1,.93,.75],shin:60,refl:.3,emis:.9},
+ tail:{c:[.95,.04,.03],shin:60,refl:.2,emis:.7},
+ chrome:{c:[.85,.86,.88],shin:120,refl:.9,emis:0}
+};
+function buildCar(key){
+  const p=PROF[key],L=p.L,parts=[];
+  const add=(g,x,y,z,mat,extra)=>parts.push(Object.assign({g,base:M.tr(x,y,z),mat},extra||{}));
+  const R=p.wr,ar=R+.09,a=L*.19,wxR=-L/2+a,wxF=L/2-a;
+  const lo=[[-L/2+.12,.22]];
+  const arch=cx=>{const dx=Math.sqrt(ar*ar-(.22-R)*(.22-R)),t0=Math.atan2(.22-R,-dx),t1=Math.atan2(.22-R,dx);
+    let T0=t0<0?t0+Math.PI*2:t0;let T1=t1;lo.push([cx-dx,.22]);const N=14;
+    for(let i=1;i<N;i++){const t=T0+(T1-T0)*i/N;lo.push([cx+ar*Math.cos(t),R+ar*Math.sin(t)])}lo.push([cx+dx,.22])};
+  arch(wxR);arch(wxF);
+  lo.push([L/2-.1,.22],[L/2-.02,.3],[L/2,.5],[L/2-.01,p.hf-.14],[L/2-.08,p.hf-.02],[L/2-.25,p.hf],[p.xc+.3,p.hc-.02],[p.xc,p.hc],
+    [p.xrb+.05,p.belt],[-L/2+.14,p.belt],[-L/2+.03,p.belt-.1],[-L/2,p.belt-.35],[-L/2,.5],[-L/2+.03,.3]);
+  const Wb=p.Wb,Wc=Wb-.32;
+  add(extrude(lo,Wb,.09),0,0,0,'body');
+  const cab=[[p.xrb,p.belt-.03],[p.xc,p.hc-.03],[p.xrf,p.roof],[p.xrr,p.roof]];
+  add(extrude(cab,Wc,.05),0,0,0,'glass');
+  const xf=y=>p.xc+(p.xrf-p.xc)*(y-p.hc)/(p.roof-p.hc),xr=y=>p.xrb+(p.xrr-p.xrb)*(y-p.belt)/(p.roof-p.belt),y0=p.roof-.09;
+  add(extrude([[xr(y0),y0],[xf(y0),y0],[p.xrf,p.roof],[p.xrr,p.roof]],Wc+.04,.03),0,0,0,'body');
+  const xb=(p.xrf+p.xrr)/2-.05;
+  const pill=[[[p.xc,p.hc-.02],[p.xrf,p.roof],[p.xrf-.085,p.roof],[p.xc-.085,p.hc-.02]],
+    [[p.xrb,p.belt-.02],[p.xrb+.11,p.belt-.02],[p.xrr+.11,p.roof],[p.xrr,p.roof]],
+    [[xb,p.belt],[xb+.07,p.belt],[xb+.07,p.roof-.05],[xb,p.roof-.05]]];
+  pill.forEach(poly=>[-1,1].forEach(sg=>add(extrude(poly,.07,.012),0,0,sg*(Wc/2-.02),'body')));
+  [-1,1].forEach(sg=>add(box(.16,.09,.1),p.xc-.05,p.hc+.13,sg*(Wc/2+.1),'body'));
+  [-1,1].forEach(sg=>{
+    add(box(.12,.12,.36),L/2-.06,p.hf-.15,sg*(Wb/2-.36),'head');
+    add(box(.07,.11,.4),-L/2+.03,p.belt-.1,sg*(Wb/2-.32),'tail');
+  });
+  add(box(.05,.2,.8),L/2-.01,p.hf-.34,0,'dark');
+  add(box(.12,.1,Wb-.12),L/2-.07,.37,0,'dark');add(box(.12,.1,Wb-.12),-L/2+.07,.37,0,'dark');
+  const wheels=[[wxR,-1],[wxR,1],[wxF,-1],[wxF,1]];
+  const gTire=cyl(R,.25),gRim=cyl(R*.7,.262),gHub=cyl(.07,.285,16),gWell=cyl(ar-.012,Wb-.1,40),gSp=box(R*1.35,.05,.02);
+  wheels.forEach(([wx,sg],wi)=>{
+    const z=sg*(Wb/2-.15);
+    add(gWell,wx,R,0,'dark',wi%2?{}:{});
+    add(gTire,wx,R,z,'tire',{spin:1});add(gRim,wx,R,z,'rim',{spin:1});add(gHub,wx,R,z,'chrome',{spin:1});
+    for(let k=0;k<5;k++)add(gSp,wx,R,z+sg*.132,'rim',{spin:1,rot:k*Math.PI/5});
+  });
+  return{parts,p};
+}
+
+/* shaders */
+const VS=`attribute vec3 aP;attribute vec3 aN;uniform mat4 uVP,uM;uniform float uFlip;varying vec3 vN,vW;
+void main(){vec4 w=uM*vec4(aP,1.);vec3 n=mat3(uM)*aN;gl_Position=uVP*w;if(uFlip>.5){w.y=-w.y;n.y=-n.y;}vW=w.xyz;vN=n;}`;
+const FS=`precision mediump float;varying vec3 vN,vW;uniform vec3 uCam,uCol;uniform float uShin,uRefl,uEmis;
+vec3 env(vec3 r){float h=r.y;vec3 sky=mix(vec3(.95,.8,.55),vec3(.28,.34,.5),clamp(h*1.4,0.,1.));
+ vec3 gr=mix(vec3(.16,.12,.07),vec3(.015),clamp(-h*2.5,0.,1.));vec3 c=mix(gr,sky,smoothstep(-.08,.14,h));
+ c+=vec3(1.,.95,.85)*smoothstep(.86,.98,h)*1.5;
+ c+=vec3(1.,.75,.3)*smoothstep(.55,.9,r.x*.8+r.z*.35)*.7*step(0.,h+.05);
+ c+=vec3(.55,.7,1.)*smoothstep(.7,.95,-r.x*.7-r.z*.5)*.5*step(0.,h);return c;}
+void main(){vec3 N=normalize(vN);vec3 V=normalize(uCam-vW);vec3 L=normalize(vec3(.4,.9,.5)),L2=normalize(vec3(-.7,.35,-.5));
+ float d=max(dot(N,L),0.)*.85+max(dot(N,L2),0.)*.4;float amb=.2+.12*N.y;vec3 H=normalize(L+V);
+ float sp=pow(max(dot(N,H),0.),uShin)*(.35+uRefl*.8);vec3 R=reflect(-V,N);float fr=pow(1.-max(dot(N,V),0.),3.);
+ vec3 col=uCol*(amb+d)+env(R)*uRefl*(.28+.72*fr)+sp*vec3(1.,.96,.88)+uCol*uEmis*2.;
+ col=col/(1.+col*.18);gl_FragColor=vec4(pow(col,vec3(.92)),1.);}`;
+const GVS=`attribute vec3 aP;uniform mat4 uVP;varying vec3 vW;void main(){vW=aP;gl_Position=uVP*vec4(aP,1.);}`;
+const GFS=`precision mediump float;varying vec3 vW;uniform float uYaw;
+void main(){float d=length(vW.xz);float a=mix(.6,1.,smoothstep(2.5,10.,d));vec3 col=vec3(.018,.018,.02);
+ float ring=smoothstep(.05,0.,abs(d-3.45))+smoothstep(.025,0.,abs(d-3.72))*.7;
+ float ang=atan(vW.z,vW.x);float tk=step(.5,fract(ang*28./6.2832))*step(abs(d-3.95),.07);
+ vec3 gold=vec3(.96,.7,.1);col+=gold*(ring*.95+tk*.55)+gold*.09*smoothstep(4.2,0.,d)+vec3(.55,.02,0.)*.08*smoothstep(7.,2.,d);
+ float c=cos(uYaw),s=sin(uYaw);float lx=c*vW.x-s*vW.z,lz=s*vW.x+c*vW.z;
+ float sh=exp(-(lx*lx/(2.55*2.55)+lz*lz/(1.0*1.0))*1.5);col*=1.-sh*.92;a=mix(a,1.,sh*.85);
+ gl_FragColor=vec4(col,a);}`;
+const DVS=`attribute vec3 aP;uniform mat4 uVP;uniform float uT;uniform float uS;void main(){vec3 p=aP;p.y=mod(p.y+uT*(.15+fract(aP.x*7.)*.25),4.5);p.x+=sin(uT*.5+aP.z)*.2;
+ gl_Position=uVP*vec4(p,1.);gl_PointSize=uS*(1.2+fract(aP.z*13.)*2.)/gl_Position.w*6.;}`;
+const DFS=`precision mediump float;void main(){float d=length(gl_PointCoord-.5);if(d>.5)discard;gl_FragColor=vec4(1.,.76,.2,(1.-d*2.)*.55);}`;
+
+const hex2rgb=h=>{const n=parseInt(h.slice(1),16);return[(n>>16&255)/255,(n>>8&255)/255,(n&255)/255]};
+const lin=c=>c.map(v=>Math.pow(v,2.2));
+
+function Stage(canvas,o){
+  const gl=canvas.getContext('webgl',{antialias:true,alpha:true,premultipliedAlpha:false})||canvas.getContext('experimental-webgl');
+  if(!gl){document.body.classList.add('nogl-on');return null}
+  const sh=(t,s)=>{const x=gl.createShader(t);gl.shaderSource(x,s);gl.compileShader(x);if(!gl.getShaderParameter(x,gl.COMPILE_STATUS))console.error(gl.getShaderInfoLog(x));return x};
+  const prog=(v,f)=>{const p=gl.createProgram();gl.attachShader(p,sh(gl.VERTEX_SHADER,v));gl.attachShader(p,sh(gl.FRAGMENT_SHADER,f));gl.linkProgram(p);return p};
+  const pc=prog(VS,FS),pg=prog(GVS,GFS),pd=prog(DVS,DFS);
+  const loc=(p,n)=>gl.getUniformLocation(p,n);
+  const U={vp:loc(pc,'uVP'),m:loc(pc,'uM'),flip:loc(pc,'uFlip'),cam:loc(pc,'uCam'),col:loc(pc,'uCol'),shin:loc(pc,'uShin'),refl:loc(pc,'uRefl'),emis:loc(pc,'uEmis')};
+  const mk=g=>{const buf=gl.createBuffer();const arr=new Float32Array(g.P.length*2);for(let i=0;i<g.P.length/3;i++){arr.set(g.P.slice(i*3,i*3+3),i*6);arr.set(g.N.slice(i*3,i*3+3),i*6+3)}
+    gl.bindBuffer(gl.ARRAY_BUFFER,buf);gl.bufferData(gl.ARRAY_BUFFER,arr,gl.STATIC_DRAW);
+    const ib=gl.createBuffer();gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER,ib);gl.bufferData(gl.ELEMENT_ARRAY_BUFFER,new Uint16Array(g.I),gl.STATIC_DRAW);return{buf,ib,n:g.I.length}};
+  const gq=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,gq);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-14,0,-14,14,0,-14,14,0,14,-14,0,-14,14,0,14,-14,0,14]),gl.STATIC_DRAW);
+  const dust=[];for(let i=0;i<140;i++)dust.push((Math.random()-.5)*14,Math.random()*4.5,(Math.random()-.5)*14);
+  const db=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,db);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array(dust),gl.STATIC_DRAW);
+
+  let car=null,bodyCol=lin(hex2rgb(o.color)),tgtCol=bodyCol.slice(),pop=0,yaw=o.yaw0||-.62,vel=0,pitch=.2,drag=false,lx=0,ly=0,idle=0,spin=0,vis=true,scrollYaw=0;
+  const meshes=new Map();
+  const getMesh=(g)=>{if(!meshes.has(g))meshes.set(g,mk(g));return meshes.get(g)};
+  const stage={
+    setCar(k){car=buildCar(k);pop=0;yaw-=0},
+    setColor(h){tgtCol=lin(hex2rgb(h))},
+    yawBoost(v){scrollYaw=v}
+  };
+  stage.setCar(o.car);
+  canvas.addEventListener('pointerdown',e=>{drag=true;lx=e.clientX;ly=e.clientY;vel=0;canvas.setPointerCapture(e.pointerId)});
+  canvas.addEventListener('pointermove',e=>{if(!drag)return;const dx=e.clientX-lx;yaw+=dx*.008;vel=dx*.008;pitch=clamp(pitch+(e.clientY-ly)*.004,.06,.55);lx=e.clientX;ly=e.clientY;idle=performance.now()+2500});
+  ['pointerup','pointercancel'].forEach(ev=>canvas.addEventListener(ev,()=>drag=false));
+  new IntersectionObserver(es=>vis=es[0].isIntersecting).observe(canvas);
+  const draw=(mat,flip,t)=>{
+    gl.useProgram(pc);
+    car.parts.forEach(pt=>{
+      const m=mk_(pt);
+      let local=pt.base;
+      if(pt.spin){local=M.mul(pt.base,M.rZ(-spin+(pt.rot||0)))}
+      gl.uniformMatrix4fv(U.m,false,M.mul(mat,local));
+      const mm=pt.mat==='body'?{c:bodyCol,shin:90,refl:.78,emis:0}:MAT[pt.mat];
+      gl.uniform3fv(U.col,mm.c);gl.uniform1f(U.shin,mm.shin);gl.uniform1f(U.refl,mm.refl);gl.uniform1f(U.emis,mm.emis);
+      gl.bindBuffer(gl.ARRAY_BUFFER,m.buf);gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER,m.ib);
+      const aP=gl.getAttribLocation(pc,'aP'),aN=gl.getAttribLocation(pc,'aN');
+      gl.enableVertexAttribArray(aP);gl.enableVertexAttribArray(aN);
+      gl.vertexAttribPointer(aP,3,gl.FLOAT,false,24,0);gl.vertexAttribPointer(aN,3,gl.FLOAT,false,24,12);
+      gl.drawElements(gl.TRIANGLES,m.n,gl.UNSIGNED_SHORT,0);
+    });
+  };
+  const mk_=pt=>getMesh(pt.g);
+  let last=performance.now();
+  function frame(now){
+    requestAnimationFrame(frame);
+    if(!vis)return;
+    const dt=Math.min(.05,(now-last)/1000);last=now;
+    const dpr=Math.min(devicePixelRatio||1,2),w=canvas.clientWidth,h=canvas.clientHeight;
+    if(canvas.width!==Math.round(w*dpr)||canvas.height!==Math.round(h*dpr)){canvas.width=Math.round(w*dpr);canvas.height=Math.round(h*dpr)}
+    if(!drag){if(now>idle){vel+=((o.auto||.25)*dt-vel)*.05}yaw+=vel;}
+    else vel*=.9;
+    spin+=dt*2.2;
+    pop=Math.min(1,pop+dt*1.6);
+    for(let i=0;i<3;i++)bodyCol[i]+=(tgtCol[i]-bodyCol[i])*.12;
+    const e=1-Math.pow(1-pop,3),back=1+1.4*Math.pow(pop-1,3)+.4*Math.pow(pop-1,2);
+    const s=.55+.45*Math.min(1.04,back);
+    const yawT=yaw+scrollYaw+(1-e)*1.3;
+    gl.viewport(0,0,canvas.width,canvas.height);
+    gl.clearColor(0,0,0,0);gl.clear(gl.COLOR_BUFFER_BIT|gl.DEPTH_BUFFER_BIT);
+    gl.enable(gl.DEPTH_TEST);gl.disable(gl.CULL_FACE);gl.disable(gl.BLEND);
+    const asp=w/h;const mobile=w<760;
+    const dist=(o.dist||8)*(asp<1?1.25/Math.max(.62,asp)*.78:1);
+    const target=[0,.62,0];const eye=[0,target[1]+dist*Math.sin(pitch),dist*Math.cos(pitch)];
+    const shift=asp>1.15?(o.shift||0):0;
+    const vp=M.mul(M.persp(.56,asp,.5,60,shift),M.look(eye,target));
+    gl.useProgram(pc);gl.uniformMatrix4fv(U.vp,false,vp);gl.uniform3fv(U.cam,eye);
+    const carM=M.mul(M.tr(0,.004,0),M.mul(M.rY(yawT),M.sc(s,s,s)));
+    gl.uniform1f(U.flip,1);draw(M.mul(M.sc(1,-1,1),carM),1);
+    /* ground */
+    gl.useProgram(pg);gl.enable(gl.BLEND);gl.blendFunc(gl.SRC_ALPHA,gl.ONE_MINUS_SRC_ALPHA);
+    gl.uniformMatrix4fv(gl.getUniformLocation(pg,'uVP'),false,vp);gl.uniform1f(gl.getUniformLocation(pg,'uYaw'),yawT);
+    gl.bindBuffer(gl.ARRAY_BUFFER,gq);const gp=gl.getAttribLocation(pg,'aP');gl.enableVertexAttribArray(gp);gl.vertexAttribPointer(gp,3,gl.FLOAT,false,12,0);
+    gl.depthMask(false);gl.drawArrays(gl.TRIANGLES,0,6);gl.depthMask(true);gl.disable(gl.BLEND);
+    gl.useProgram(pc);gl.uniform1f(U.flip,0);draw(carM,0);
+    /* dust */
+    gl.useProgram(pd);gl.enable(gl.BLEND);gl.blendFunc(gl.SRC_ALPHA,gl.ONE);gl.depthMask(false);
+    gl.uniformMatrix4fv(gl.getUniformLocation(pd,'uVP'),false,vp);gl.uniform1f(gl.getUniformLocation(pd,'uT'),now/1000);gl.uniform1f(gl.getUniformLocation(pd,'uS'),dpr*(h/700));
+    gl.bindBuffer(gl.ARRAY_BUFFER,db);const dpA=gl.getAttribLocation(pd,'aP');gl.enableVertexAttribArray(dpA);gl.vertexAttribPointer(dpA,3,gl.FLOAT,false,12,0);
+    gl.drawArrays(gl.POINTS,0,140);gl.depthMask(true);gl.disable(gl.BLEND);
+  }
+  requestAnimationFrame(frame);
+  return stage;
+}
+
+/* ---------- hero ---------- */
+const PAINT={'Gold':'#d99e08','Obsidian':'#17171a','Red':'#c70d0a','Pearl':'#e9e9ec','Blue':'#1b43b8'};
+const hero=Stage($('#heroGL'),{car:'sport',color:PAINT.Gold,shift:.34,dist:8.6,auto:.35,yaw0:-.7});
+const hs=$('#heroSw');
+Object.entries(PAINT).forEach(([n,h],i)=>{const b=document.createElement('button');b.className='sw'+(i?'':' on');b.style.background=h;b.title=n;b.setAttribute('aria-label',n);
+  b.onclick=()=>{$$('.sw',hs).forEach(x=>x.classList.toggle('on',x===b));hero&&hero.setColor(h)};hs.appendChild(b)});
+addEventListener('scroll',()=>{hero&&hero.yawBoost(Math.min(scrollY,900)*.0035)},{passive:true});
+
+/* ---------- showroom ---------- */
+const CARS=[
+ {k:'vanguard',name:'Toyota Vanguard',year:'2011',price:'$7,500',tag:'SUV',color:'#e9e9ec'},
+ {k:'camry',name:'Toyota Camry',year:'',price:'$2,700',tag:'Quick sale',color:'#e9e9ec'},
+ {k:'ractis',name:'Toyota Ractis',year:'2008',price:'$4,800',tag:'Compact',color:'#b7bac0'},
+ {k:'ist',name:'Toyota Ist',year:'2007',price:'$5,500',tag:'Hatchback',color:'#f2f2f2'},
+ {k:'juke',name:'Nissan Juke',year:'2010',price:'$4,800',tag:'Crossover',color:'#8c9199'}
+];
+const SPAINT={'Pearl':'#e9e9ec','Silver':'#b7bac0','Graphite':'#4a4d54','Black':'#17171a','Red':'#c70d0a','Blue':'#1b43b8','Gold':'#d99e08'};
+const show=Stage($('#showGL'),{car:CARS[0].k,color:CARS[0].color,shift:0,dist:8.2,auto:.3,yaw0:-.6});
+const list=$('#list'),ssw=$('#showSw');
+let curCar=CARS[0];
+function pick(c){
+  curCar=c;$$('.item',list).forEach(x=>x.classList.toggle('on',x.dataset.k===c.k));
+  show&&(show.setCar(c.k),show.setColor(c.color));
+  $('#iTag').textContent=c.tag;$('#iName').textContent=c.name;
+  $('#iMeta').textContent=(c.year?'Model '+c.year+' · ':'')+'Hai Tejaria, Juba';
+  $('#iPrice').textContent=c.price;
+  $('#waBtn').href='https://wa.me/211928976624?text='+encodeURIComponent(`Hello SuperYai Motors! Is the ${c.name}${c.year?' ('+c.year+')':''} still available? I saw it at ${c.price}.`);
+  $('#carSel').value=c.name;
+  $$('.sw',ssw).forEach(x=>x.classList.toggle('on',x.dataset.h===c.color));
+}
+CARS.forEach(c=>{const b=document.createElement('button');b.className='item';b.dataset.k=c.k;
+  b.innerHTML=`<span><b>${c.name}</b><small>${c.year?'Model '+c.year+' · ':''}${c.tag}</small></span><span class="p">${c.price}</span>`;b.onclick=()=>pick(c);list.appendChild(b)});
+Object.entries(SPAINT).forEach(([n,h])=>{const b=document.createElement('button');b.className='sw';b.dataset.h=h;b.style.background=h;b.title=n;b.setAttribute('aria-label',n);
+  b.onclick=()=>{curCar.color=h;show&&show.setColor(h);$$('.sw',ssw).forEach(x=>x.classList.toggle('on',x===b))};ssw.appendChild(b)});
+pick(CARS[0]);
+
+/* ---------- form ---------- */
+$('#quote').addEventListener('submit',e=>{
+  e.preventDefault();const f=new FormData(e.target);
+  const t=`Hello SuperYai Motors! I'm ${f.get('name')}.\nI'm interested in: ${f.get('car')}\nBudget: ${f.get('budget')||'to discuss'}\n${f.get('msg')||''}`;
+  open('https://wa.me/211928976624?text='+encodeURIComponent(t),'_blank');
+});
+})();
+</script>
+</body>
+</html>
